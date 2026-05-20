@@ -125,4 +125,4 @@ Insira aqui a imagem do diagrama:
 
 ## 👨‍💻 Desenvolvedor
 
-Projeto desenvolvido por **Kauã Lucio de Souza** para fins acadêmicos.
+Projeto desenvolvido por **Kauã Lucio de Souza** 
