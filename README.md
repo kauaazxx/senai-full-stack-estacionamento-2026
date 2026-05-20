@@ -1,47 +1,128 @@
-# ESTACIONAMENTO ACME API
-Situação de Aprendizagem - Back-End (Node.JS, JavaSript, VsCode, ORM Prisma, Insomnia)
-## Contextualização
-O ESTACIONAMENTO ACME tem atuado em nossa cidade com ótimo atendimento e segurança, é nosso cliente e necessita de um sistema Web para registro dos estacionamentos diários.<br>O P.O. após uma visita ao cliente, elaborou o DER e UML DC(Diagrama de Classes) a seguir e elencou os requisitos funcionais.<br>
-![DER e DC](./docs/der-dc.png)
-## Desafios
-- 1 Faça **fork** deste repositório e clone na sua estação de trabalho.
-- 2 Desenvolva um sistema **WEB full-stack** conforme **regras de negócio, requisitos e casos de teste** a seguir.
-- 3 Faça commits constantes das suas atualizações, informando o que for feito
-- 4 Ao concluir faça um **pull request**
+# 🚗 Estacionamento KLS
 
-### Regras de negócio
-- [RN001] Todos os **veículos** evem ser cadastrados em um banco de dados
-- [RN002] Neste momento não é necessário controle de acesso, pois o sistema será utilizado pelo somente **atendente** e instalado somente em seu computador.
-- [RN003] As vezes que o veículo estacionar será chamado de **estadia** e será atrelada ao veículo, na entrada a data de saída e o valor ficarão em branco, ao saír os campos saida e valorTotal deve ser gerados e calculados.
-- [RN004] O sistema deve possuir uma UI Web para o atendente cadastrar os veículos e as estadias.
+Sistema web para gerenciamento de estacionamento, permitindo o cadastro de veículos, controle de estadias e cálculo automático de permanência e valor total.
 
-### Requisitos funcionais
-- [RF001] O sistema deve permitir o CRUD de veículos.
-    - [RF001.1] Os campos cor e ano não são obrigatórios, podem ser nulos.
-    - [RF001.2] Ao enviar a placa de um veículo deve retornar os dados específicos e seus **estacionamentos**.
-- [RF002] O sistema deve permitir o CRUD de estadias (estacionamentos).
-    - [RF002.1] O sistema deve associar a estadia a um veículo.
-    - [RF002.2] Ao cadastrar uma nova estadia **create** no controller, a data e hora da **entrada** deve ser gerada pelo Banco de Dados @dedault(now()).
-    - [RF002.3] Ao cadastrar uma nova estadia **create** no controller, a **saida**, pode ser nula **"?"** pois será preenchida na rota **update** quando o veículo saír do estacionamento.
-    - [RF002.4] Ao cadastrar uma nova estadia **create** no controller, o **valorTotal**, deve ser nulo **"?"** pois será calculado na rota **update** quando o veículo saír do estacionamento.
-    - [RF002.5] Se ao realizar **update** o campo **saida** for enviado/preenchido o sistema deve calcular a **valorTotal** com a formula **"valorHora * (saida - entrada)"**.
+## 📌 Sobre o Projeto
 
-### Requisitos não funcionais
-- [NF001] A API deve ser desenvolvida para responder tanto a UI Web como a futuros aplicativos.
-- [NF002] A UI pode ser desenvolvida com ou sem frameworks como bootstrap por exemplo.
-- [NF003] A documentação deve conter os três diagramas da UML [DC (Diagrama de Classes), DCU (Diagrama de Casos de Uso) e DA (Diagrama de Atividades)]
-- [NF004] O Reqdme.md principal do projeto deve conter esta documentação acrecida da lista das tecnologias utilizadas e um passo a passo de como executar e testar.
+O **Estacionamento KLS** foi desenvolvido para facilitar o gerenciamento de veículos e estadias em um estacionamento.
 
-### Casos de teste: Ponto a Ponto
-- [CT001] Deve ser cadastrado pelo menos 5 veículos.
-    - [CT001.1] Pelo menos dois veículos devem ter ano e cor cadastrados.
-- [CT002] Cadastre, altere e exclua um veículo.
-- [CT003] Cadastre uma estadia para cada veículo.
-    - [CT003.1] Pelo menos dois veículos devem ter duas ou mais Estadias cadastradas.
-- [CT004] Cadastre, altere e exclua uma estadia.
-- [CT005] Altere pelo menos duas estadias preenchendo a **saida** e verificando se calcula o **valorTotal**.
+O sistema permite cadastrar veículos, registrar entradas e saídas, calcular automaticamente os valores da estadia e gerenciar todas as informações por meio de uma interface moderna, limpa e intuitiva.
 
-## Tecnologias
 
-## Passo a Passo de como executar e testar
+## ⚙️ Tecnologias Utilizadas
 
+Este projeto foi desenvolvido utilizando as seguintes tecnologias:
+
+### Front-End
+- HTML5
+- CSS3
+- JavaScript
+
+### Back-End
+- Node.js
+- Express.js
+
+### Banco de Dados
+- Prisma ORM
+- MySQL
+- XAMPP
+
+
+### 🚘 Gerenciamento de Veículos
+- Cadastro de veículos
+- Edição de veículos
+- Exclusão de veículos
+- Listagem de veículos cadastrados
+- Validação de campos obrigatórios
+- Bloqueio de placas duplicadas
+
+### 🅿️ Gerenciamento de Estadias
+- Registro de entrada do veículo
+- Registro de saída do veículo
+- Seleção de veículo cadastrado
+- Cálculo automático do valor da estadia
+- Registro automático de data e horário
+- Alteração automática de status da estadia
+
+
+## 🗂️ Estrutura do Projeto
+
+├── api/
+│   ├── controllers/
+│   ├── routes/
+│   ├── data/
+│   │   └── prisma.js
+│   └── server.js
+│
+├── prisma/
+│   └── schema.prisma
+│
+├── web/
+│   ├── index.html
+│   ├── script.js
+│   └── style.css
+│
+├── .env
+└── README.md
+
+## ▶️ Como Executar o Projeto
+
+### 1. Clonar o repositório
+
+git clone URL_DO_REPOSITORIO
+
+### 2. Instalar dependências
+
+npm install
+
+### 3. Configurar banco de dados
+
+Configure o arquivo `.env` com as credenciais do MySQL.
+
+Exemplo:
+
+DATABASE_URL="mysql://usuario:senha@localhost:3306/estacionamento"
+
+### 4. Gerar Prisma Client
+
+npx prisma generate
+
+### 5. Executar migrations
+
+npx prisma migrate dev
+
+### 6. Iniciar o servidor
+
+npm run dev
+
+
+## 📊 Diagramas UML
+
+### Diagrama de Casos de Uso
+
+Insira aqui a imagem do diagrama:
+
+![Diagrama de Casos de Uso](./docs/diagrama-casos-de-uso.png)
+
+
+### Diagrama de Atividades — Cadastro de Veículo
+
+![Diagrama de Atividades](./docs/diagrama-atividade-veiculo.png)
+
+
+### Diagrama de Atividades — Registro de Estadia
+
+![Diagrama de Atividades](./docs/diagrama-estadia.png)
+
+
+## 🧠 Regras de Negócio
+
+- Não é permitido cadastrar placas duplicadas.
+- O sistema realiza validação de campos obrigatórios.
+- A data e horário são obtidos automaticamente pelo sistema.
+- O valor total da estadia é calculado automaticamente no momento da saída.
+
+
+## 👨‍💻 Desenvolvedor
+
+Projeto desenvolvido por **Kauã Lucio de Souza** para fins acadêmicos.
